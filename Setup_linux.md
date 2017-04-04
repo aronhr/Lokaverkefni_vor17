@@ -56,7 +56,6 @@ sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-availab
 
 ```
  	sudo apt-get update
- 	sudo apt-get install mysql-server
 	sudo apt-get install phpmyadmin php-mbstring php-gettext
 ```
 > Then we need to enable mcrypt and mbstring
@@ -85,3 +84,10 @@ sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-availab
 ```
 	sudo apt-get purge phpmyadmin
 ```
+
+##### The solution to the problem was, i forgot to install mysql.
+
+```
+sudo apt-get install mysql-server
+```
+> Everything it up and running!
