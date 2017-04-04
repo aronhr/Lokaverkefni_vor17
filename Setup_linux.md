@@ -51,3 +51,37 @@ sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-availab
 ```
  service apache2 reload
 ```
+
+#### Setup mysql and phpmyadmin
+
+```
+ 	sudo apt-get update
+ 	sudo apt-get install mysql-server
+	sudo apt-get install phpmyadmin php-mbstring php-gettext
+```
+> Then we need to enable mcrypt and mbstring
+
+```
+ 	phpenmod mcrypt
+	phpenmod mbstring
+```
+
+> Then we need to restart apache
+
+```
+ 	systemctl restart apache2
+```
+
+
+##### I got an error with Mysql setup
+
+> #2002 - No such file or directory<br />The server is not responding (or the local server's socket is not correctly configured).
+
+##### I need to purge mysql and reinstall it!
+##### I will follow my previous steps. When i am done removing mysql.
+
+#### Purge phpmyadmin
+
+```
+	sudo apt-get purge phpmyadmin
+```
