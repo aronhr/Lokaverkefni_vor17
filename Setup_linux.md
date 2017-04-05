@@ -32,7 +32,7 @@ sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-availab
  sudo nano /etc/apache2/sites-available/html.conf
 ```
 
->  ServerName lokaverkenfi.tk
+>  ServerName lokaverkefni.tk
 
 >  ServerAlias www.lokaverkefni.tk
 
