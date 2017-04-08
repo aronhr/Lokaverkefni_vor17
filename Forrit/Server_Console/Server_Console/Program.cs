@@ -33,11 +33,12 @@ namespace Server_Console
             {
                 listener = new TcpListener(IPAddress.Any, port);
                 listener.Start();
-
+                Console.WriteLine("Ready for connection..");
                 while (!done)
                 {
                     connection = listener.AcceptSocket();
                     counter++;
+                    Console.WriteLine("Connected!");
                     readThread = new Thread(GetMessages);
                     readThread.Start();
                 }
@@ -61,9 +62,14 @@ namespace Server_Console
                 socketStrem = new NetworkStream(socket);
                 reader = new BinaryReader(socketStrem);
                 writer = new BinaryWriter(socketStrem);
-                writer.Write("Connected!");
-                string message = null;
-
+                writer.Write("Connecteddddddd!");
+                do
+                {
+                    string message = null;
+                    message = Console.ReadLine();
+                    writer.Write(message);
+                } while (true);
+                
                 // do something with messages
                 // Input frá Client koma herna!
 

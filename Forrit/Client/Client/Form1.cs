@@ -51,12 +51,16 @@ namespace Client
                     {
                         message = reader.ReadString();
                         MessageBox.Show(message);
+                        if(message == "close")
+                        {
+                            Environment.Exit(Environment.ExitCode);
+                        }
                     }
                     catch (Exception error)
                     {
                         MessageBox.Show("Error 0:" + error);
                     }
-                } while (message != "done");
+                } while (message != "close");
             } catch (Exception ex)
             {
                 MessageBox.Show("Error 1: " + ex);
