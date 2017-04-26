@@ -91,3 +91,26 @@ sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-availab
 sudo apt-get install mysql-server
 ```
 > Everything it up and running!
+
+### Allow remote connection to mysql-server
+
+```
+sudo nano /etc/mysql/mysql.conf.d/mysqld.conf
+```
+
+> Find bind-address = 127.0.0.1 and Change the address to wildcard 0.0.0.0
+> This should look like this: bind-address = 0.0.0.0
+
+##### Then restart mysql
+
+```
+service mysql restart
+```
+
+##### Then check if ip address is correct and is binding to correct port
+
+```
+netstat -plutn | grep -i sql
+```
+##### The output should look like this!
+> tcp        0      0 0.0.0.0:3306            0.0.0.0:*               LISTEN      22228/mysqld
