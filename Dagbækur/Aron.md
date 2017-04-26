@@ -8,3 +8,6 @@
 
 #### Dagur 3
   > Setti upp database sem heitir "Store" og bjó til tvær töflur, users og vörur. Users heldur utanum starfsmennina og vörur heldur utanum vörurnar.
+
+#### Dagur 4
+  > Það var vandamál með að tengjast mysql í gegnum forritið, lagaði það með því að leyfa remote connections to mysql server
