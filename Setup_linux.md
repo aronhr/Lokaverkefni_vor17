@@ -113,4 +113,6 @@ service mysql restart
 netstat -plutn | grep -i sql
 ```
 ##### The output should look like this!
-> tcp        0      0 0.0.0.0:3306            0.0.0.0:*               LISTEN      22228/mysqld
+```
+tcp        0      0 0.0.0.0:3306            0.0.0.0:*               LISTEN      22228/mysqld
+```
