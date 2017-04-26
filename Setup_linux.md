@@ -3,8 +3,8 @@
 #### Update server and install apache2
 
 ```
-  sudo apt-get update
-  sudo apt-get install apache2
+sudo apt-get update
+sudo apt-get install apache2
 ```
 
 #### Set Global ServerName to Suppress Syntax Warnings
@@ -29,7 +29,7 @@ sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-availab
 #### Change ServerAdmin, ServerName and ServerAlias
 
 ```
- sudo nano /etc/apache2/sites-available/html.conf
+sudo nano /etc/apache2/sites-available/html.conf
 ```
 
 >  ServerName lokaverkefni.tk
@@ -43,32 +43,32 @@ sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-availab
 #### Enable the New Virtual Host Files
 
 ```
- sudo a2ensite html.conf
+sudo a2ensite html.conf
 ```
 
 > To activate the new configuration, you need to run: service apache2 reload
 
 ```
- service apache2 reload
+service apache2 reload
 ```
 
 #### Setup mysql and phpmyadmin
 
 ```
- 	sudo apt-get update
-	sudo apt-get install phpmyadmin php-mbstring php-gettext
+sudo apt-get update
+sudo apt-get install phpmyadmin php-mbstring php-gettext
 ```
 > Then we need to enable mcrypt and mbstring
 
 ```
- 	phpenmod mcrypt
-	phpenmod mbstring
+phpenmod mcrypt
+phpenmod mbstring
 ```
 
 > Then we need to restart apache
 
 ```
- 	systemctl restart apache2
+systemctl restart apache2
 ```
 
 
@@ -82,7 +82,7 @@ sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-availab
 #### Purge phpmyadmin
 
 ```
-	sudo apt-get purge phpmyadmin
+sudo apt-get purge phpmyadmin
 ```
 
 ##### The solution to the problem was, i forgot to install mysql.
