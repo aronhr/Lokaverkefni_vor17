@@ -37,7 +37,6 @@ namespace Client
 
             try
             {
-                MessageBox.Show("Connecting...");
 
                 client = new TcpClient();
                 client.Connect("localhost", port);
@@ -50,7 +49,8 @@ namespace Client
                     try
                     {
                         message = reader.ReadString();
-                        MessageBox.Show(message);
+                        // Uncomment til að byrta message fra server
+                        //MessageBox.Show(message);
                         if(message == "close")
                         {
                             Environment.Exit(Environment.ExitCode);
@@ -58,12 +58,10 @@ namespace Client
                     }
                     catch (Exception error)
                     {
-                        MessageBox.Show("Error 0:" + error);
                     }
                 } while (message != "close");
             } catch (Exception ex)
             {
-                MessageBox.Show("Error 1: " + ex);
                 Environment.Exit(Environment.ExitCode);
             }
             finally

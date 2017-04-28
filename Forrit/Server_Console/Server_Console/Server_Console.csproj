@@ -44,10 +44,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="db_connect.cs" />
-    <Compile Include="MySqlCommand.cs" />
-    <Compile Include="MySqlConnection.cs" />
-    <Compile Include="MySqlDataReader.cs" />
-    <Compile Include="MySqlException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

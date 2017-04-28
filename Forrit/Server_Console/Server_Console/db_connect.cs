@@ -60,6 +60,20 @@ namespace Server_Console
             }
         }
 
+        public string CreateUser(string kennitala, string nafn, string kenni)
+        {
+            string faersla = null;
+            if (OpenConnection() == true)
+            {
+                fyrirspurn = "INSERT INTO users (id, kennitala, nafn, kenni, admin) VALUES ('NULL', '" + kennitala + "', '" + nafn + "', '" + kenni + "', 'no');";
+                nySQLskipun = new SqlCommand(fyrirspurn, sqltenging);
+                sqlLesari = nySQLskipun.ExecuteReader();
+                CloseConnection();
+                return faersla;
+            }
+            return faersla;
+        }
+
         public List<string> LesaNotendur()
         {
             List<string> faerslur = new List<string>();

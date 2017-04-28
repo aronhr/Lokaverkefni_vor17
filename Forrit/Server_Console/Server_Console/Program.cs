@@ -11,7 +11,7 @@ namespace Server_Console
         private Socket connection;
         private int counter = 0;
         private int port = 5000;
-
+        db_connect conn = new db_connect();
         static void Main(string[] args)
         {
             new Program().Run();
@@ -41,6 +41,24 @@ namespace Server_Console
                     Console.WriteLine("Connected!");
                     readThread = new Thread(GetMessages);
                     readThread.Start();
+
+                    // Commands
+                    string serverTalks = Console.ReadLine();
+
+                    if(serverTalks == "CreateUser")
+                    {
+                        // Create new user with db_connect.CreateUser();
+                        Console.WriteLine("Kennitala: ");
+                        string kennitala = Console.ReadLine();
+                        Console.WriteLine("Nafn: ");
+                        string nafn = Console.ReadLine();
+                        Console.WriteLine("Kenni: ");
+                        string kenni = Console.ReadLine();
+                        Console.WriteLine(kennitala + nafn + kenni);
+                        Console.ReadKey();
+                        conn.CreateUser(kennitala,nafn,kenni);
+                        Console.WriteLine("User created");
+                    }
                 }
             }
             catch (Exception e)
