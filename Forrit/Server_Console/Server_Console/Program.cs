@@ -44,19 +44,24 @@ namespace Server_Console
 
                     // Commands
                     string serverTalks = Console.ReadLine();
+                    Console.WriteLine(serverTalks);
 
                     if(serverTalks == "CreateUser")
                     {
                         // Create new user with db_connect.CreateUser();
-                        Console.WriteLine("Kennitala: ");
-                        string kennitala = Console.ReadLine();
-                        Console.WriteLine("Nafn: ");
-                        string nafn = Console.ReadLine();
-                        Console.WriteLine("Kenni: ");
-                        string kenni = Console.ReadLine();
-                        Console.WriteLine(kennitala + nafn + kenni);
+                        string kennitala = "1234567890";
+                        string nafn = "Bananai";
+                        string kenni = "Bana123";
+
+                        Console.Write("Kennitala: ");
+                        kennitala = Console.ReadLine();
+                        Console.Write("Nafn: ");
+                        nafn = Console.ReadLine();
+                        Console.Write("Kenni: ");
+                        kenni = Console.ReadLine();
+                        Console.Write("Samantekt: " + kennitala);
                         Console.ReadKey();
-                        conn.CreateUser(kennitala,nafn,kenni);
+                        //conn.CreateUser(kennitala,nafn,kenni);
                         Console.WriteLine("User created");
                     }
                 }
@@ -80,12 +85,11 @@ namespace Server_Console
                 socketStrem = new NetworkStream(socket);
                 reader = new BinaryReader(socketStrem);
                 writer = new BinaryWriter(socketStrem);
-                writer.Write("Connecteddddddd!");
                 do
                 {
                     string message = null;
                     message = Console.ReadLine();
-                    writer.Write(message);
+                    //writer.Write(message);
                 } while (true);
                 
                 // do something with messages
