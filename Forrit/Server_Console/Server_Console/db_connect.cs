@@ -60,12 +60,12 @@ namespace Server_Console
             }
         }
 
-        public string CreateUser(string kennitala, string nafn, string kenni)
+        public string CreateUsert(string kennitala, string nafn, string kenni)
         {
             string faersla = null;
             if (OpenConnection() == true)
             {
-                fyrirspurn = "INSERT INTO users (id, kennitala, nafn, kenni, admin) VALUES ('NULL', '" + kennitala + "', '" + nafn + "', '" + kenni + "', 'no');";
+                fyrirspurn = "INSERT INTO users (kennitala, nafn, kenni) VALUES ('" + kennitala + "', '" + nafn + "', '" + kenni + "');";
                 nySQLskipun = new SqlCommand(fyrirspurn, sqltenging);
                 sqlLesari = nySQLskipun.ExecuteReader();
                 CloseConnection();
@@ -73,6 +73,34 @@ namespace Server_Console
             }
             return faersla;
         }
+
+        public void CreateUser(string kennitala, string nafn, string kenni)
+        {
+            string cmdString = "INSERT INTO users (kennitala, nafn, kenni) VALUES (@val1, @va2, @val3)";
+            using (SqlConnection conn = new SqlConnection(tengistrengur))
+            {
+                using (SqlCommand comm = new SqlCommand())
+                {
+                    comm.Connection = conn;
+                    comm.CommandString = cmdString;
+                    comm.Parameters.AddWithValue("@val1", kennitala);
+                    comm.Parameters.AddWithValue("@val2", nafn);
+                    comm.Parameters.AddWithValue("@val3", kenni);
+                    try
+                    {
+                        conn.Open();
+                        comm.ExecuteNonQuery();
+                    }
+                    catch(SqlException e)
+                    {
+                        // do something with the exception
+                        // don't hide it
+                    }
+                }
+            }
+        }
+
+
 
         public List<string> LesaNotendur()
         {

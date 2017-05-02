@@ -39,8 +39,8 @@ namespace Server_Console
                     connection = listener.AcceptSocket();
                     counter++;
                     Console.WriteLine("Connected!");
-                    readThread = new Thread(GetMessages);
-                    readThread.Start();
+                    //readThread = new Thread(GetMessages);
+                    //readThread.Start();
 
                     // Commands
                     string serverTalks = Console.ReadLine();
@@ -59,10 +59,11 @@ namespace Server_Console
                         nafn = Console.ReadLine();
                         Console.Write("Kenni: ");
                         kenni = Console.ReadLine();
-                        Console.Write("Samantekt: " + kennitala);
+                        Console.Write("Samantekt: " + kennitala + nafn + kenni);
                         Console.ReadKey();
-                        //conn.CreateUser(kennitala,nafn,kenni);
+                        conn.CreateUser(kennitala,nafn,kenni);
                         Console.WriteLine("User created");
+                        Console.ReadKey();
                     }
                 }
             }
@@ -72,6 +73,7 @@ namespace Server_Console
             }
         } // RunServer END
 
+        /*
         public void GetMessages()
         {
             Socket socket = connection;
@@ -107,7 +109,7 @@ namespace Server_Console
                 socketStrem.Close();
                 socket.Close();
             }
-        }
+        }*/
     }
 }
 
