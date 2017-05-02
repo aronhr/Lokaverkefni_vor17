@@ -11,3 +11,6 @@
 
 #### Dagur 4
   > Það var vandamál með að tengjast mysql í gegnum forritið, lagaði það með því að leyfa remote connections to mysql server
+
+#### Dagur 5
+  > Lagaði create user i terminal byrjaði á að setja users i database
