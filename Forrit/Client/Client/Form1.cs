@@ -23,12 +23,13 @@ namespace Client
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Run();
+            GenerateButtons();
+            //Run();
         }
 
         void Run()
         {
-            GenerateButtons();
+           
             new Thread(Connect).Start();
         }
 
@@ -87,6 +88,18 @@ namespace Client
                 button.Location = new System.Drawing.Point(x, y);
                 button.Size = new System.Drawing.Size(80, 80);
                 button.Text = "Texti sem birstist á takkanum";
+                button.Click += (s, e) =>
+                {
+                    string productID = 5577.ToString();
+                    Product product = list.FirstOrDefault(p => p.ID == productID);
+                    if (product == null)
+                    {
+                        textBox.Text = "VILLA ???";
+                        return;
+                    }
+                    textBox.Clear();
+                    listBox.Items.Add(product);
+                };
                 buttons.Add(button);
                 this.Controls.Add(button);
                 x = x + 80;
