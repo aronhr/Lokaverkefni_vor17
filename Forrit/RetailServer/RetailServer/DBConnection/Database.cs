@@ -9,12 +9,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
-
+using MySql.Data.MySqlClient;
 
 namespace RetailServer.DBConnection
 {
     class Database
-    {        
+    {
         private string server;
         private string database;
         private string uid;
@@ -26,20 +26,14 @@ namespace RetailServer.DBConnection
         SqlCommand nySQLskipun;
         SqlDataReader sqlLesari = null;
 
-        public Database()
-        {
-            TengingVidGagnagrunn();
-        }
-
         public void TengingVidGagnagrunn()
         {
-            server = "104.236.39.70"; //"lokaverkefni.tk";
+            server = "lokaverkefni.tk";
             database = "store";
             uid = "forrit";
             password = "Bananabomba98";
-            tengistrengur = string.Format("Server={0};Port={1};Database={2};Uid={3};Pwd={4};", server, 3306, database, uid, password);
+            tengistrengur = string.Format("Server={0};Database={1};Uid={2};Pwd={3};", server, database, uid, password);
             sqltenging = new SqlConnection(tengistrengur);
-            sqltenging.Open();
         }
 
         private bool OpenConnection()
@@ -153,7 +147,7 @@ namespace RetailServer.DBConnection
                 return faersla;
             }
             return faersla;
-        }        
+        }
 
         public string GetVara(string strikamerki)
         {
@@ -313,41 +307,69 @@ namespace RetailServer.DBConnection
         }
 
         #region Product fetching
+        public MySqlConnection Connect()
+        {
+            MySqlConnection connection = new MySqlConnection("Server=lokaverkefni.tk;Database=store;uid=forrit;Pwd=Bananabomba98;");
+            try
+            {
+                connection.Open();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+            return connection;
+        }
+
         public List<Product> GetAllarVorur()
         {
             List<Product> listinn = new List<Product>();
-            if (OpenConnection() == true)
+            var connection = Connect();
+            if (connection != null)
             {
-                fyrirspurn = "SELECT nafn,verd,strikamerki FROM vorur";
-                nySQLskipun = new SqlCommand(fyrirspurn, sqltenging);
-                sqlLesari = nySQLskipun.ExecuteReader();
-                while (sqlLesari.Read())
+                using (connection)
                 {
-                    var nafn = (sqlLesari.GetString(0));
-                    var verd = (sqlLesari.GetInt32(1));
-                    var strikamerki = (sqlLesari.GetInt32(2));
-                    listinn.Add(new Product { Name = nafn, Price = verd, ID = strikamerki.ToString() });
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.CommandText = "SELECT nafn,verd,vorunumer FROM vorur";
+                        using (var reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                var nafn = (reader.GetString(0));
+                                var verd = (reader.GetInt32(1));
+                                var vorunumer = (reader.GetInt32(2));
+                                listinn.Add(new Product { Name = nafn, Price = verd, ID = vorunumer.ToString() });
+                            }
+                        }
+                    }
                 }
-                CloseConnection();
             }
             return listinn;
         }
 
-        public Product GetEinaVoru(string strikamerki)
+        public Product GetEinaVoru(string vorunumer)
         {
             Product product = null;
-            if (OpenConnection() == true)
+            var connection = Connect();
+            if (connection != null)
             {
-                fyrirspurn = "SELECT nafn,verd FROM vorur WHERE strikamerki = '" + strikamerki + "'";
-                nySQLskipun = new SqlCommand(fyrirspurn, sqltenging);
-                sqlLesari = nySQLskipun.ExecuteReader();
-                while (sqlLesari.Read())
+                using (connection)
                 {
-                    var nafn = (sqlLesari.GetString(0));
-                    var verd = (sqlLesari.GetInt32(1));
-                    product = new Product { Name = nafn, Price = verd, ID = strikamerki.ToString() };
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.CommandText = "SELECT nafn,verd FROM vorur WHERE vorunumer = '" + vorunumer + "'";
+                        using (var reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                var nafn = (reader.GetString(0));
+                                var verd = (reader.GetInt32(1));
+                                product = new Product { Name = nafn, Price = verd, ID = vorunumer.ToString() };
+                            }
+                        }
+                    }
                 }
-                CloseConnection();
             }
             return product;
         }
