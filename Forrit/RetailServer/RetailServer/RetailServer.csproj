@@ -79,7 +79,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\DemoController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="DBConnection\Database.cs" />
     <Compile Include="Program.cs" />

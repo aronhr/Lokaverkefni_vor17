@@ -311,7 +311,7 @@ namespace RetailServer.DBConnection
         {
             MySqlConnection connection = new MySqlConnection("Server=lokaverkefni.tk;Database=store;uid=forrit;Pwd=Bananabomba98;");
             try
-            {
+            {                
                 connection.Open();
             }
             catch (Exception)

@@ -1,48 +1,10 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Net;
-using System.Net.Sockets;
-using System.Threading;
-using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using Newtonsoft.Json;
 
 namespace Client
 {
-    public class ProductHelper
-    {
-        JsonSerializer serializer = new JsonSerializer();
-
-        private T Get<T>(string id = null)
-        {
-            using (WebClient client = new WebClient())
-            {
-                var stream = client.OpenRead("http://localhost:8080/api/product/" + (id == null ? string.Empty : id));
-                using (StreamReader reader = new StreamReader(stream))
-                {
-                    string s = reader.ReadToEnd();
-                    return JsonConvert.DeserializeObject<T>(s);
-                }
-            }
-        }
-
-        public List<Product> GetProducts()
-        {
-            return Get<List<Product>>();
-        }
-        public Product GetProduct(string id)
-        {
-            return Get<Product>(id);
-        }
-    }
     public partial class Form1 : Form
     {
-        private NetworkStream output;
-        private BinaryWriter writer;
-        private BinaryReader reader;
-        private string message = "";
-        private int port = 5000;
         private ProductHelper api = new ProductHelper();
         public Form1()
         {
@@ -51,56 +13,9 @@ namespace Client
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Run();
-        }
-
-        void Run()
-        {
-            new Thread(Connect).Start();
-        }
-
-        void Connect()
-        {
-            TcpClient client = null;
-
-            try
-            {
-
-                client = new TcpClient();
-                client.Connect("localhost", port);
-                output = client.GetStream();
-                writer = new BinaryWriter(output);
-                reader = new BinaryReader(output);
-
-                do
-                {
-                    try
-                    {
-                        message = reader.ReadString();
-                        // Uncomment til að byrta message fra server
-                        //MessageBox.Show(message);
-                        if (message == "close")
-                        {
-                            Environment.Exit(Environment.ExitCode);
-                        }
-                    }
-                    catch (Exception error)
-                    {
-                    }
-                } while (message != "close");
-            }
-            catch (Exception ex)
-            {
-                Environment.Exit(Environment.ExitCode);
-            }
-            finally
-            {
-                reader.Close();
-                writer.Close();
-                output.Close();
-                client.Close();
-            }
-        }
+           //Run();
+        }        
+        
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             switch (keyData)
@@ -148,9 +63,7 @@ namespace Client
                     break;
             }
             return true;
-            // return base.ProcessCmdKey(ref msg, keyData);
         }
-
 
         private void num_Button_Click(object sender, EventArgs e)
         {
@@ -193,15 +106,5 @@ namespace Client
             textBox.Clear();
         }
 
-    }
-    public class Product
-    {
-        public string Name { get; set; }
-        public string ID { get; set; }
-        public int Price { get; set; }
-        public override string ToString()
-        {
-            return Name + " " + Price;
-        }
     }
 }
