@@ -6,8 +6,36 @@ using System.Threading;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
+
 namespace Client
 {
+    public class ProductHelper
+    {
+        JsonSerializer serializer = new JsonSerializer();
+
+        private T Get<T>(string id = null)
+        {
+            using (WebClient client = new WebClient())
+            {
+                var stream = client.OpenRead("http://localhost:8080/api/product/" + (id == null ? string.Empty : id));
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    string s = reader.ReadToEnd();
+                    return JsonConvert.DeserializeObject<T>(s);
+                }
+            }
+        }
+
+        public List<Product> GetProducts()
+        {
+            return Get<List<Product>>();
+        }
+        public Product GetProduct(string id)
+        {
+            return Get<Product>(id);
+        }
+    }
     public partial class Form1 : Form
     {
         private NetworkStream output;
@@ -15,14 +43,14 @@ namespace Client
         private BinaryReader reader;
         private string message = "";
         private int port = 5000;
-
+        private ProductHelper api = new ProductHelper();
         public Form1()
         {
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {
+        {      
             Run();
         }
 
@@ -51,7 +79,7 @@ namespace Client
                         message = reader.ReadString();
                         // Uncomment til að byrta message fra server
                         //MessageBox.Show(message);
-                        if(message == "close")
+                        if (message == "close")
                         {
                             Environment.Exit(Environment.ExitCode);
                         }
@@ -60,7 +88,8 @@ namespace Client
                     {
                     }
                 } while (message != "close");
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Environment.Exit(Environment.ExitCode);
             }
@@ -119,15 +148,15 @@ namespace Client
                     break;
             }
             return true;
-           // return base.ProcessCmdKey(ref msg, keyData);
+            // return base.ProcessCmdKey(ref msg, keyData);
         }
-       
-        
+
+
         private void num_Button_Click(object sender, EventArgs e)
         {
             int number;
 
-            if(string.IsNullOrWhiteSpace(textBox.Text) || int.TryParse(textBox.Text, out number))
+            if (string.IsNullOrWhiteSpace(textBox.Text) || int.TryParse(textBox.Text, out number))
             {
                 Button button = (Button)sender;
                 textBox.Text += button.Text;
@@ -137,7 +166,7 @@ namespace Client
         private void buttonEnter_Click(object sender, EventArgs e)
         {
             string productID = textBox.Text;
-            Product product = list.FirstOrDefault(p => p.ID == productID);
+            Product product = api.GetProduct(productID);
             if (product == null)
             {
                 textBox.Text = "VILLA ???";
@@ -145,21 +174,6 @@ namespace Client
             }
             textBox.Clear();
             listBox.Items.Add(product);
-        }
-
-        List<Product> list = new List<Product>()
-        {
-            new Product {ID ="5577" , Name = "epli", Price = 109 }
-        };
-        public class Product
-        {
-            public string Name { get; set; }
-            public string ID { get; set; }
-            public int Price { get; set; }
-            public override string ToString()
-            {
-                return Name + " " + Price;
-            }
         }
 
         private void delete_Click(object sender, EventArgs e)
@@ -177,6 +191,17 @@ namespace Client
         private void clear_Click(object sender, EventArgs e)
         {
             textBox.Clear();
+        }
+
+    }
+    public class Product
+    {
+        public string Name { get; set; }
+        public string ID { get; set; }
+        public int Price { get; set; }
+        public override string ToString()
+        {
+            return Name + " " + Price;
         }
     }
 }
