@@ -28,6 +28,7 @@ namespace Client
 
         void Run()
         {
+            GenerateButtons();
             new Thread(Connect).Start();
         }
 
@@ -70,6 +71,32 @@ namespace Client
                 writer.Close();
                 output.Close();
                 client.Close();
+            }
+        }
+
+        private void GenerateButtons()
+        {
+            int x = 550;
+            int y = 5;
+            int counter = 0;
+            List<Button> buttons = new List<Button>();
+            for (int i = 0; i < 24; i++)
+            {
+                counter++;
+                Button button = new Button();
+                button.Location = new System.Drawing.Point(x, y);
+                button.Size = new System.Drawing.Size(80, 80);
+                button.Text = "Texti sem birstist á takkanum";
+                buttons.Add(button);
+                this.Controls.Add(button);
+                x = x + 80;
+                if (counter == 3)
+                {
+                    y = y + 80;
+                    x = 550;
+                    counter = 0;
+                }
+                
             }
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
