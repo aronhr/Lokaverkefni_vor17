@@ -14,3 +14,6 @@
 
 #### Dagur 5
   > Lagaði create user i terminal byrjaði á að setja users i database
+
+#### Dagur 6
+  > Reynt var að laga server og client communication, þegar clientinn senti frá ser fyrirspurn fékk serverinn ekki fyrirspurnina. (Ekki hefur verið fundin lausn enþá). Lagaði ERD_Mapping þar sem Eddi bætti við nýjum column í db. Ég byrjaði á ERD_Diagram. 
