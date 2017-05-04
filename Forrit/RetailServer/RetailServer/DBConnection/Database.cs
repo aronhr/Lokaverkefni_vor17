@@ -64,247 +64,8 @@ namespace RetailServer.DBConnection
             }
         }
 
-        public string CreateUsert(string kennitala, string nafn, string kenni)
-        {
-            string faersla = null;
-            if (OpenConnection() == true)
-            {
-                fyrirspurn = "INSERT INTO users (kennitala, nafn, kenni) VALUES ('" + kennitala + "', '" + nafn + "', '" + kenni + "');";
-                nySQLskipun = new SqlCommand(fyrirspurn, sqltenging);
-                sqlLesari = nySQLskipun.ExecuteReader();
-                CloseConnection();
-                return faersla;
-            }
-            return faersla;
-        }
+        
 
-        public void CreateUser(string kennitala, string nafn, string kenni)
-        {
-            string cmdString = "INSERT INTO users (kennitala, nafn, kenni) VALUES (@val1, @va2, @val3)";
-            using (SqlConnection conn = new SqlConnection(tengistrengur))
-            {
-                using (SqlCommand comm = new SqlCommand(cmdString))
-                {
-                    comm.Connection = conn;
-                    //comm.CommandString = cmdString;
-                    comm.Parameters.AddWithValue("@val1", kennitala);
-                    comm.Parameters.AddWithValue("@val2", nafn);
-                    comm.Parameters.AddWithValue("@val3", kenni);
-                    try
-                    {
-                        conn.Open();
-                        comm.ExecuteNonQuery();
-                    }
-                    catch (SqlException e)
-                    {
-                        // do something with the exception
-                        // don't hide it
-                    }
-                }
-            }
-        }
-
-
-
-        public List<string> LesaNotendur()
-        {
-            List<string> faerslur = new List<string>();
-            string lina = null;
-            if (OpenConnection() == true)
-            {
-                fyrirspurn = "SELECT id, kennitala, nafn, kenni FROM users";
-                nySQLskipun = new SqlCommand(fyrirspurn, sqltenging);
-                sqlLesari = nySQLskipun.ExecuteReader();
-                while (sqlLesari.Read())
-                {
-                    for (int i = 0; i < sqlLesari.FieldCount; i++)
-                    {
-                        lina += (sqlLesari.GetValue(i).ToString()) + ":";
-                    }
-                    faerslur.Add(lina);
-                    lina = null;
-                }
-                CloseConnection();
-                return faerslur;
-            }
-            return faerslur;
-        }
-
-        // Spurning hvort að við notum þetta???
-        public string GetPassword(string id)
-        {
-            string faersla = null;
-            if (OpenConnection() == true)
-            {
-                fyrirspurn = "SELECT lykilorð FROM starfsmenn WHERE id = '" + id + "'";
-                nySQLskipun = new SqlCommand(fyrirspurn, sqltenging);
-                sqlLesari = nySQLskipun.ExecuteReader();
-                while (sqlLesari.Read())
-                {
-                    faersla = (sqlLesari.GetValue(0).ToString());
-                }
-                CloseConnection();
-                return faersla;
-            }
-            return faersla;
-        }
-
-        public string GetVara(string strikamerki)
-        {
-            string faersla = null;
-            if (OpenConnection() == true)
-            {
-                fyrirspurn = "SELECT strikamerki FROM vorur WHERE strikamerki = '" + strikamerki + "'";
-                nySQLskipun = new SqlCommand(fyrirspurn, sqltenging);
-                sqlLesari = nySQLskipun.ExecuteReader();
-                while (sqlLesari.Read())
-                {
-                    faersla = (sqlLesari.GetValue(0).ToString());
-                }
-                CloseConnection();
-                return faersla;
-            }
-            return faersla;
-        }
-
-        public string GetVaraVerd(string strikamerki)
-        {
-            string faersla = null;
-            if (OpenConnection() == true)
-            {
-                fyrirspurn = "SELECT verd FROM vorur WHERE strikamerki = '" + strikamerki + "'";
-                nySQLskipun = new SqlCommand(fyrirspurn, sqltenging);
-                sqlLesari = nySQLskipun.ExecuteReader();
-                while (sqlLesari.Read())
-                {
-                    faersla = (sqlLesari.GetValue(0).ToString());
-                }
-                CloseConnection();
-                return faersla;
-            }
-            return faersla;
-        }
-
-        public string vorunumer(int vorunumer)
-        {
-            string faersla = null;
-            if (OpenConnection() == true)
-            {
-                fyrirspurn = "SELECT vorunumer FROM vorur WHERE vorunumer ='" + vorunumer + "'";
-                nySQLskipun = new SqlCommand(fyrirspurn, sqltenging);
-                sqlLesari = nySQLskipun.ExecuteReader();
-                while (sqlLesari.Read())
-                {
-                    faersla = (sqlLesari.GetValue(0).ToString());
-                }
-                CloseConnection();
-                return faersla;
-            }
-            return faersla;
-        }
-
-        public string vorunumer_verd(int vorunumer)
-        {
-            string faersla = null;
-            if (OpenConnection() == true)
-            {
-                fyrirspurn = "SELECT vorunumer FROM vorur WHERE vorunumer ='" + vorunumer + "'";
-                nySQLskipun = new SqlCommand(fyrirspurn, sqltenging);
-                sqlLesari = nySQLskipun.ExecuteReader();
-                while (sqlLesari.Read())
-                {
-                    faersla = (sqlLesari.GetValue(0).ToString());
-                }
-                CloseConnection();
-                return faersla;
-            }
-            return faersla;
-        }
-
-        public List<string> Voruleit()
-        {
-            List<string> faerslur = new List<string>();
-            string lina = null;
-
-            if (OpenConnection() == true)
-            {
-                fyrirspurn = "SELECT vorunumer, nafn, verd FROM vorur";
-                nySQLskipun = new SqlCommand(fyrirspurn, sqltenging);
-                sqlLesari = nySQLskipun.ExecuteReader();
-                while (sqlLesari.Read())
-                {
-                    for (int i = 0; i < sqlLesari.FieldCount; i++)
-                    {
-                        lina += (sqlLesari.GetValue(i).ToString()) + ":";
-                    }
-                    faerslur.Add(lina);
-                    lina = null;
-                }
-                CloseConnection();
-                return faerslur;
-            }
-            return faerslur;
-        }
-
-        public List<string> voruleit_name(string name_of_product)
-        {
-            List<string> faerslur = new List<string>();
-            string lina = null;
-            if (OpenConnection() == true)
-            {
-                fyrirspurn = "SELECT vorunumer, nafn, verd FROM vorur WHERE nafn LIKE '%" + name_of_product + "%'";
-                nySQLskipun = new SqlCommand(fyrirspurn, sqltenging);
-                sqlLesari = nySQLskipun.ExecuteReader();
-                while (sqlLesari.Read())
-                {
-                    for (int i = 0; i < sqlLesari.FieldCount; i++)
-                    {
-                        lina += (sqlLesari.GetValue(i).ToString()) + ":";
-                    }
-                    faerslur.Add(lina);
-                    lina = null;
-                }
-                CloseConnection();
-                return faerslur;
-            }
-            return faerslur;
-        }
-
-        public string GetProductFromVorunumer(string vorunumer)
-        {
-            string faersla = null;
-            if (OpenConnection() == true)
-            {
-                fyrirspurn = "SELECT nafn FROM vorur WHERE vorunumer = '" + vorunumer + "'";
-                nySQLskipun = new SqlCommand(fyrirspurn, sqltenging);
-                sqlLesari = nySQLskipun.ExecuteReader();
-                while (sqlLesari.Read())
-                {
-                    faersla = (sqlLesari.GetValue(0).ToString());
-                }
-                CloseConnection();
-                return faersla;
-            }
-            return faersla;
-        }
-
-        public string GetVaraVerdFromVorunumer(string vorunumer)
-        {
-            string faersla = null;
-            if (OpenConnection() == true)
-            {
-                fyrirspurn = "SELECT verd FROM vorur WHERE vorunumer = '" + vorunumer + "'";
-                nySQLskipun = new SqlCommand(fyrirspurn, sqltenging);
-                sqlLesari = nySQLskipun.ExecuteReader();
-                while (sqlLesari.Read())
-                {
-                    faersla = (sqlLesari.GetValue(0).ToString());
-                }
-                CloseConnection();
-                return faersla;
-            }
-            return faersla;
-        }
 
         #region Product fetching
         public MySqlConnection Connect()
@@ -372,6 +133,36 @@ namespace RetailServer.DBConnection
                 }
             }
             return product;
+        }
+
+
+
+        public bool CreateUser(string kennitala, string nafn, string kenni)
+        {
+
+            var connection = Connect();
+            if (connection != null)
+            {
+                using (connection)
+                {
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.CommandText = "INSERT INTO users (kennitala, nafn, kenni) VALUES ('" + kennitala + "', '" + nafn + "', '" + kenni + "')";
+                        try
+                        {
+                            command.ExecuteNonQuery();
+                            Console.WriteLine("Success!");
+                            return true;
+                        }
+                        catch (SqlException e)
+                        {
+                            Console.WriteLine("Error: " + e);
+                            return false;
+                        }
+                    }
+                }
+            }
+            return false;
         }
         #endregion
     }
