@@ -25,7 +25,7 @@ namespace Client
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //GenerateButtons();
+            GenerateButtons();
             //Run();
         }
 
@@ -77,7 +77,7 @@ namespace Client
             }
         }
 
-        /*private void GenerateButtons()
+        private void GenerateButtons()
         {
             int x = 550;
             int y = 5;
@@ -92,15 +92,7 @@ namespace Client
                 button.Text = "Texti sem birstist á takkanum";
                 button.Click += (s, e) =>
                 {
-                    string productID = 5577.ToString();
-                    Product product = list.FirstOrDefault(p => p.ID == productID);
-                    if (product == null)
-                    {
-                        textBox.Text = "VILLA ???";
-                        return;
-                    }
-                    textBox.Clear();
-                    listBox.Items.Add(product);
+                    // Hérna kemur inn virkni fyrir alla takkanna.
                 };
                 buttons.Add(button);
                 this.Controls.Add(button);
@@ -113,7 +105,7 @@ namespace Client
                 }
                 
             }
-        }*/
+        }
         
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
