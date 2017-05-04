@@ -82,7 +82,7 @@ namespace Server_Console
                 using (SqlCommand comm = new SqlCommand())
                 {
                     comm.Connection = conn;
-                    comm.CommandString = cmdString;
+                    //comm.CommandString = cmdString;
                     comm.Parameters.AddWithValue("@val1", kennitala);
                     comm.Parameters.AddWithValue("@val2", nafn);
                     comm.Parameters.AddWithValue("@val3", kenni);

@@ -25,7 +25,7 @@ namespace Client
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            GenerateButtons();
+            //GenerateButtons();
             //Run();
         }
 
@@ -77,12 +77,12 @@ namespace Client
             }
         }
 
-        private void GenerateButtons()
+        /*private void GenerateButtons()
         {
             int x = 550;
             int y = 5;
             int counter = 0;
-            List<Button> buttons = new List<Button>();
+            List<Button> buttons = new List<Button>();  
             for (int i = 0; i < 24; i++)
             {
                 counter++;
@@ -113,7 +113,7 @@ namespace Client
                 }
                 
             }
-        }
+        }*/
         
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
