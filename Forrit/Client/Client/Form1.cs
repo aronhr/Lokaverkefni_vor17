@@ -1,21 +1,11 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Net;
-using System.Net.Sockets;
-using System.Threading;
-using System.IO;
-using System.Collections.Generic;
-using System.Linq;
+
 namespace Client
 {
     public partial class Form1 : Form
     {
-        private NetworkStream output;
-        private BinaryWriter writer;
-        private BinaryReader reader;
-        private string message = "";
-        private int port = 5000;
-
+        private ProductHelper api = new ProductHelper();
         public Form1()
         {
             InitializeComponent();
@@ -112,6 +102,7 @@ namespace Client
                 
             }
         }
+        
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             switch (keyData)
@@ -159,15 +150,13 @@ namespace Client
                     break;
             }
             return true;
-           // return base.ProcessCmdKey(ref msg, keyData);
         }
-       
-        
+
         private void num_Button_Click(object sender, EventArgs e)
         {
             int number;
 
-            if(string.IsNullOrWhiteSpace(textBox.Text) || int.TryParse(textBox.Text, out number))
+            if (string.IsNullOrWhiteSpace(textBox.Text) || int.TryParse(textBox.Text, out number))
             {
                 Button button = (Button)sender;
                 textBox.Text += button.Text;
@@ -177,7 +166,7 @@ namespace Client
         private void buttonEnter_Click(object sender, EventArgs e)
         {
             string productID = textBox.Text;
-            Product product = list.FirstOrDefault(p => p.ID == productID);
+            Product product = api.GetProduct(productID);
             if (product == null)
             {
                 textBox.Text = "VILLA ???";
@@ -185,21 +174,6 @@ namespace Client
             }
             textBox.Clear();
             listBox.Items.Add(product);
-        }
-
-        List<Product> list = new List<Product>()
-        {
-            new Product {ID ="5577" , Name = "epli", Price = 109 }
-        };
-        public class Product
-        {
-            public string Name { get; set; }
-            public string ID { get; set; }
-            public int Price { get; set; }
-            public override string ToString()
-            {
-                return Name + " " + Price;
-            }
         }
 
         private void delete_Click(object sender, EventArgs e)
@@ -218,5 +192,6 @@ namespace Client
         {
             textBox.Clear();
         }
+
     }
 }
