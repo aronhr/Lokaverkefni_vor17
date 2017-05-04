@@ -19,5 +19,10 @@ namespace RetailServer.Controllers
         {
             return database.GetEinaVoru(id);
         }
+
+        public IEnumerable<Product> GetVorurFyrirKassa()
+        {
+            return database.GetVorurOnDeck();
+        }
     }       
 }

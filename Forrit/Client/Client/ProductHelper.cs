@@ -30,6 +30,10 @@ namespace Client
         {
             return Get<Product>(id);
         }
+        public List<Product> GetItemsOnDeck()
+        {
+            return Get<List<Product>>();
+        }
     }
 
     public class Product
