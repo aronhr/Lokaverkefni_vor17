@@ -13,8 +13,95 @@ namespace Client
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           //Run();
-        }        
+            GenerateButtons();
+            //Run();
+        }
+
+        void Run()
+        {
+           
+            new Thread(Connect).Start();
+        }
+
+        void Connect()
+        {
+            TcpClient client = null;
+
+            try
+            {
+
+                client = new TcpClient();
+                client.Connect("localhost", port);
+                output = client.GetStream();
+                writer = new BinaryWriter(output);
+                reader = new BinaryReader(output);
+
+                do
+                {
+                    try
+                    {
+                        message = reader.ReadString();
+                        // Uncomment til að byrta message fra server
+                        //MessageBox.Show(message);
+                        if(message == "close")
+                        {
+                            Environment.Exit(Environment.ExitCode);
+                        }
+                    }
+                    catch (Exception error)
+                    {
+                    }
+                } while (message != "close");
+            } catch (Exception ex)
+            {
+                Environment.Exit(Environment.ExitCode);
+            }
+            finally
+            {
+                reader.Close();
+                writer.Close();
+                output.Close();
+                client.Close();
+            }
+        }
+
+        private void GenerateButtons()
+        {
+            int x = 550;
+            int y = 5;
+            int counter = 0;
+            List<Button> buttons = new List<Button>();
+            for (int i = 0; i < 24; i++)
+            {
+                counter++;
+                Button button = new Button();
+                button.Location = new System.Drawing.Point(x, y);
+                button.Size = new System.Drawing.Size(80, 80);
+                button.Text = "Texti sem birstist á takkanum";
+                button.Click += (s, e) =>
+                {
+                    string productID = 5577.ToString();
+                    Product product = list.FirstOrDefault(p => p.ID == productID);
+                    if (product == null)
+                    {
+                        textBox.Text = "VILLA ???";
+                        return;
+                    }
+                    textBox.Clear();
+                    listBox.Items.Add(product);
+                };
+                buttons.Add(button);
+                this.Controls.Add(button);
+                x = x + 80;
+                if (counter == 3)
+                {
+                    y = y + 80;
+                    x = 550;
+                    counter = 0;
+                }
+                
+            }
+        }
         
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
