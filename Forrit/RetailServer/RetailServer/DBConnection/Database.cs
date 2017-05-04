@@ -136,6 +136,34 @@ namespace RetailServer.DBConnection
         }
 
 
+        public List<Product> GetVorurOnDeck()
+        {
+            List<Product> listinn = new List<Product>();
+            var connection = Connect();
+            if (connection != null)
+            {
+                using (connection)
+                {
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.CommandText = "SELECT nafn,verd,vorunumer FROM vorur WHERE kassakerfi = 1";
+                        using (var reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                var nafn = (reader.GetString(0));
+                                var verd = (reader.GetInt32(1));
+                                var vorunumer = (reader.GetInt32(2));
+                                listinn.Add(new Product { Name = nafn, Price = verd, ID = vorunumer.ToString() });
+                            }
+                        }
+                    }
+                }
+            }
+            return listinn;
+        }
+
+
 
         public bool CreateUser(string kennitala, string nafn, string kenni)
         {
