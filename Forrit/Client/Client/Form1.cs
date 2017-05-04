@@ -1,11 +1,23 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Threading;
+using System.Net;
+using System.Net.Sockets;
+using System.IO;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Client
 {
     public partial class Form1 : Form
     {
+        private NetworkStream output;
+        private BinaryWriter writer;
+        private BinaryReader reader;
+        private string message = "";
+        private int port = 5000;
         private ProductHelper api = new ProductHelper();
+
         public Form1()
         {
             InitializeComponent();
