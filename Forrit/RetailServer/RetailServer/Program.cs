@@ -33,6 +33,7 @@ namespace RetailServer
                     if (ServerTalks == "CreateUser")
                     {
                         // Do someting
+                        Console.WriteLine("Create New User!");
                         Console.Write("Kennitala: ");
                         var kennitala = Console.ReadLine();
                         Console.Write("Nafn: ");
@@ -49,6 +50,23 @@ namespace RetailServer
                     if (ServerTalks == "CreateProduct")
                     {
                         // Do someting
+                        Console.WriteLine("Create New broduct!");
+                        Console.Write("nafn: ");
+                        var nafn_vara = Console.ReadLine();
+                        Console.Write("Vörunumer: ");
+                        var vorunumer = Console.ReadLine();
+                        Console.Write("Strikamerki: ");
+                        var strikamerki = Console.ReadLine();
+                        Console.Write("Byrgi: ");
+                        var byrgi = Console.ReadLine();
+                        Console.Write("Magn: ");
+                        var magn = Console.ReadLine();
+                        Console.Write("Verð: ");
+                        var verd = Console.ReadLine();
+
+                        user.AddProduct(nafn_vara, vorunumer, strikamerki, byrgi, magn, verd);
+
+                        ServerTalks = "";
 
                     }
                 } while (ServerTalks != "Exit" || ServerTalks != "exit");

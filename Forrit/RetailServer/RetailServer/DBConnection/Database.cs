@@ -64,9 +64,6 @@ namespace RetailServer.DBConnection
             }
         }
 
-        
-
-
         #region Product fetching
         public MySqlConnection Connect()
         {
@@ -135,8 +132,6 @@ namespace RetailServer.DBConnection
             return product;
         }
 
-
-
         public bool CreateUser(string kennitala, string nafn, string kenni)
         {
 
@@ -163,7 +158,35 @@ namespace RetailServer.DBConnection
                 }
             }
             return false;
-        }
+        } // End CreateUser
+
+        public bool AddProduct(string nafn, string vorunumer, string strikamerki, string byrgi, string magn, string verd)
+        {
+            var connection = Connect();
+            if (connection != null)
+            {
+                using (connection)
+                {
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.CommandText = "INSERT INTO vorur (nafn, vorunumer, strikamerki, byrgi, magn, verd) VALUES ('" + nafn + "', '" + vorunumer + "', '" + strikamerki + "', '" + byrgi + "', '" + magn + "', '" + verd + "');";
+                        try
+                        {
+                            command.ExecuteNonQuery();
+                            Console.WriteLine("Success!");
+                            return true;
+                        }
+                        catch (SqlException e)
+                        {
+                            Console.WriteLine("Error: " + e);
+                            return false;
+                        }
+                    }
+
+                }
+            }
+            return false;
+        } // End AddProduct
         #endregion
     }
 }
