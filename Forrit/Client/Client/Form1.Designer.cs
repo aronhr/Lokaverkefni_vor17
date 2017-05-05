@@ -43,6 +43,7 @@
             this.buttonC = new System.Windows.Forms.Button();
             this.delete = new System.Windows.Forms.Button();
             this.listBox = new System.Windows.Forms.ListBox();
+            this.alertLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -190,11 +191,21 @@
             this.listBox.Size = new System.Drawing.Size(224, 459);
             this.listBox.TabIndex = 16;
             // 
+            // alertLabel
+            // 
+            this.alertLabel.AutoSize = true;
+            this.alertLabel.ForeColor = System.Drawing.Color.Red;
+            this.alertLabel.Location = new System.Drawing.Point(299, 122);
+            this.alertLabel.Name = "alertLabel";
+            this.alertLabel.Size = new System.Drawing.Size(0, 13);
+            this.alertLabel.TabIndex = 17;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(825, 649);
+            this.Controls.Add(this.alertLabel);
             this.Controls.Add(this.listBox);
             this.Controls.Add(this.delete);
             this.Controls.Add(this.buttonC);
@@ -235,6 +246,7 @@
         private System.Windows.Forms.Button buttonC;
         private System.Windows.Forms.Button delete;
         private System.Windows.Forms.ListBox listBox;
+        private System.Windows.Forms.Label alertLabel;
     }
 }
 

@@ -105,7 +105,7 @@ namespace Client
         private void num_Button_Click(object sender, EventArgs e)
         {
             int number;
-
+            alertLabel.Text = "";
             if (string.IsNullOrWhiteSpace(textBox.Text) || int.TryParse(textBox.Text, out number))
             {
                 Button button = (Button)sender;
@@ -119,7 +119,8 @@ namespace Client
             Product product = api.GetProduct(productID);
             if (product == null)
             {
-                textBox.Text = "Vara ekki á skrá.";
+                alertLabel.Text = "Vara ekki á skrá.";
+                textBox.Clear();
                 return;
             }
             textBox.Clear();
