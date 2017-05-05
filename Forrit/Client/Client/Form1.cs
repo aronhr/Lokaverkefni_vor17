@@ -29,6 +29,7 @@ namespace Client
             int y = 5;
             int counter = 0;
             List<Button> buttons = new List<Button>();
+            Product item = api.GetProduct("5501");
             try
             {
                 
@@ -38,11 +39,11 @@ namespace Client
                     Button button = new Button();
                     button.Location = new System.Drawing.Point(x, y);
                     button.Size = new System.Drawing.Size(80, 80);
-                    //button.Text = items[i].Name;
+                    button.Text = item.Name;
                     button.Click += (s, e) =>
                     {
                         // Hérna kemur inn virkni fyrir alla takkanna.
-                        //listBox.Items.Add(items[i].Name + " " + items[i].Price);
+                        listBox.Items.Add(item.Name + " " + item.Price);
                     };
                     buttons.Add(button);
                     this.Controls.Add(button);
