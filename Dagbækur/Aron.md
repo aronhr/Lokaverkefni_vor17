@@ -17,3 +17,6 @@
 
 #### Dagur 6
   > Reynt var að laga server og client communication, þegar clientinn senti frá ser fyrirspurn fékk serverinn ekki fyrirspurnina. (Ekki hefur verið fundin lausn enþá). Lagaði ERD_Mapping þar sem Eddi bætti við nýjum column í db. Ég byrjaði á ERD_Diagram. 
+
+#### Dagur 7 
+  > Lagað var communication á milli forrita (Adam). Ég bætti inn CreateUser Skypun og CreateProduct. Það tók smá tíma þar sem Adam var búinn að breyta öllum kóðanum :)
