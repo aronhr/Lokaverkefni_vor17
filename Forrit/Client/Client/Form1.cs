@@ -23,34 +23,45 @@ namespace Client
             GenerateButtons();
         }
 
-        private void GenerateButtons()
+        public void GenerateButtons()
         {
             int x = 550;
             int y = 5;
             int counter = 0;
-            List<Button> buttons = new List<Button>();  
-            for (int i = 0; i < 24; i++)
+            List<Button> buttons = new List<Button>();
+            Product item = api.GetProduct("5501");
+            try
             {
-                counter++;
-                Button button = new Button();
-                button.Location = new System.Drawing.Point(x, y);
-                button.Size = new System.Drawing.Size(80, 80);
-                button.Text = "Texti sem birstist á takkanum";
-                button.Click += (s, e) =>
-                {
-                    // Hérna kemur inn virkni fyrir alla takkanna.
-                };
-                buttons.Add(button);
-                this.Controls.Add(button);
-                x = x + 80;
-                if (counter == 3)
-                {
-                    y = y + 80;
-                    x = 550;
-                    counter = 0;
-                }
                 
+                for (int i = 0; i < 24; i++)
+                {
+                    counter++;
+                    Button button = new Button();
+                    button.Location = new System.Drawing.Point(x, y);
+                    button.Size = new System.Drawing.Size(80, 80);
+                    button.Text = item.Name;
+                    button.Click += (s, e) =>
+                    {
+                        // Hérna kemur inn virkni fyrir alla takkanna.
+                        listBox.Items.Add(item.Name + " " + item.Price);
+                    };
+                    buttons.Add(button);
+                    this.Controls.Add(button);
+                    x = x + 80;
+                    if (counter == 3)
+                    {
+                        y = y + 80;
+                        x = 550;
+                        counter = 0;
+                    }
+
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            
         }
         
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -142,6 +153,5 @@ namespace Client
         {
             textBox.Clear();
         }
-
     }
 }
