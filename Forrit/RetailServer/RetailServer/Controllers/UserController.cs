@@ -19,9 +19,9 @@ namespace RetailServer.Controllers
             return database.CreateUser(kennitala, nafn, kenni);
         }
 
-        public bool AddProduct(string nafn, string vorunumer, string strikamerki, string byrgi, string magn, string verd)
+        public bool AddProduct(string nafn, string vorunumer, string strikamerki, string byrgi, string magn, string verd, string kassakerfi)
         {
-            return database.AddProduct(nafn, vorunumer, strikamerki, byrgi, magn, verd);
+            return database.AddProduct(nafn, vorunumer, strikamerki, byrgi, magn, verd, kassakerfi);
         }
     }
 }

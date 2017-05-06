@@ -14,5 +14,6 @@ namespace RetailServer
         public string Byrgi { get; set; }
         public string Magn { get; set; }
         public string Verd { get; set; }
+        public string Kassakerfi { get; set; }
     }
 }
