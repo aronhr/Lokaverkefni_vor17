@@ -34,18 +34,20 @@ namespace Client
                 int y = 5;
                 int counter = 0;
                 List<Button> buttons = new List<Button>();
-                Product item = api.GetProduct("5501");
-                for (int i = 0; i < 24; i++)
+                List<Product> items = api.GetProducts();
+                for (int i = 0; i < items.Count; i++)
                 {
+                    var item = items[i];
                     counter++;
                     Button button = new Button();
                     button.Location = new System.Drawing.Point(x, y);
                     button.Size = new System.Drawing.Size(80, 80);
-                    button.Text = item.Name;
+                    button.Text = item.Name.ToString();
                     button.Click += (s, e) =>
                     {
                         // Hérna kemur inn virkni fyrir alla takkanna.
-                        listBox.Items.Add(item.Name + " " + item.Verd);
+                        listBox.Items.Add(item);
+                        ReiknaSamtals();
                     };
                     buttons.Add(button);
                     this.Controls.Add(button);
@@ -61,6 +63,7 @@ namespace Client
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 if (MessageBox.Show("Could not connect to server, would you like to try again?", "Attention", MessageBoxButtons.RetryCancel) == DialogResult.Retry)
                 {
                     goto TryAgain;

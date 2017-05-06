@@ -24,10 +24,5 @@ namespace RetailServer.Controllers
         {
             database.AddProduct(product.Name, product.Vorunumer, product.Strikamerki, product.Byrgi, product.Magn, product.Verd);
         }
-
-        public IEnumerable<Product> GetVorurFyrirKassa()
-        {
-            return database.GetVorurOnDeck();
-        }
     }       
 }
