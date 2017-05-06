@@ -97,7 +97,7 @@ namespace RetailServer.DBConnection
                                 var nafn = (reader.GetString(0));
                                 var verd = (reader.GetInt32(1));
                                 var vorunumer = (reader.GetInt32(2));
-                                listinn.Add(new Product { Name = nafn, Price = verd, ID = vorunumer.ToString() });
+                                listinn.Add(new Product { Name = nafn, Verd = verd.ToString(), Vorunumer = vorunumer.ToString() });
                             }
                         }
                     }
@@ -123,7 +123,7 @@ namespace RetailServer.DBConnection
                             {
                                 var nafn = (reader.GetString(0));
                                 var verd = (reader.GetInt32(1));
-                                product = new Product { Name = nafn, Price = verd, ID = vorunumer.ToString() };
+                                product = new Product { Name = nafn, Verd = verd.ToString(), Vorunumer = vorunumer.ToString() };
                             }
                         }
                     }
@@ -150,7 +150,7 @@ namespace RetailServer.DBConnection
                                 var nafn = (reader.GetString(0));
                                 var verd = (reader.GetInt32(1));
                                 var vorunumer = (reader.GetInt32(2));
-                                listinn.Add(new Product { Name = nafn, Price = verd, ID = vorunumer.ToString() });
+                                listinn.Add(new Product { Name = nafn, Verd = verd.ToString(), Vorunumer = vorunumer.ToString() });
                             }
                         }
                     }
@@ -197,6 +197,34 @@ namespace RetailServer.DBConnection
                     using (var command = connection.CreateCommand())
                     {
                         command.CommandText = "INSERT INTO vorur (nafn, vorunumer, strikamerki, byrgi, magn, verd) VALUES ('" + nafn + "', '" + vorunumer + "', '" + strikamerki + "', '" + byrgi + "', '" + magn + "', '" + verd + "');";
+                        try
+                        {
+                            command.ExecuteNonQuery();
+                            Console.WriteLine("Success!");
+                            return true;
+                        }
+                        catch (SqlException e)
+                        {
+                            Console.WriteLine("Error: " + e);
+                            return false;
+                        }
+                    }
+
+                }
+            }
+            return false;
+        } // End AddProduct
+
+        public bool AddKvittun(string kvittun, string verd)
+        {
+            var connection = Connect();
+            if (connection != null)
+            {
+                using (connection)
+                {
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.CommandText = "INSERT INTO kvittanir (verd, kvittun) VALUES ('" + verd + "', '" + kvittun + "');";
                         try
                         {
                             command.ExecuteNonQuery();

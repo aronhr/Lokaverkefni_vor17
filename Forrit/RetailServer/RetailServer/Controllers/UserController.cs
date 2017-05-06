@@ -9,6 +9,11 @@ namespace RetailServer.Controllers
     {
         Database database = new Database();
 
+        public void Post(User user)
+        {
+            database.CreateUser(user.Kennitala, user.Nafn, user.Kenni);
+        }
+
         public bool CreateUser(string kennitala, string nafn, string kenni)
         {
             return database.CreateUser(kennitala, nafn, kenni);
