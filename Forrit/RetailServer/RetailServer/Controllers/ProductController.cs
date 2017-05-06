@@ -22,7 +22,7 @@ namespace RetailServer.Controllers
 
         public void Post(Product product)
         {
-            database.AddProduct(product.Name, product.Vorunumer, product.Strikamerki, product.Byrgi, product.Magn, product.Verd);
+            database.AddProduct(product.Name, product.Vorunumer, product.Strikamerki, product.Byrgi, product.Magn, product.Verd, product.Kassakerfi);
         }
     }       
 }

@@ -89,7 +89,7 @@ namespace RetailServer.DBConnection
                 {
                     using (var command = connection.CreateCommand())
                     {
-                        command.CommandText = "SELECT nafn,verd,vorunumer FROM vorur";
+                        command.CommandText = "SELECT nafn,verd,vorunumer,strikamerki,byrgi,magn,kassakerfi FROM vorur";
                         using (var reader = command.ExecuteReader())
                         {
                             while (reader.Read())
@@ -97,7 +97,11 @@ namespace RetailServer.DBConnection
                                 var nafn = (reader.GetString(0));
                                 var verd = (reader.GetInt32(1));
                                 var vorunumer = (reader.GetInt32(2));
-                                listinn.Add(new Product { Name = nafn, Verd = verd.ToString(), Vorunumer = vorunumer.ToString() });
+                                var strikamerki = (reader.GetInt32(3));
+                                var byrgi = (reader.GetString(4));
+                                var magn = (reader.GetInt32(5));
+                                var kassakerfi = (reader.GetInt32(6));
+                                listinn.Add(new Product { Name = nafn, Verd = verd.ToString(), Vorunumer = vorunumer.ToString(), Strikamerki = strikamerki.ToString(), Byrgi = byrgi.ToString(), Magn = magn.ToString(), Kassakerfi = kassakerfi.ToString() });
                             }
                         }
                     }
@@ -187,7 +191,7 @@ namespace RetailServer.DBConnection
             return false;
         } // End CreateUser
 
-        public bool AddProduct(string nafn, string vorunumer, string strikamerki, string byrgi, string magn, string verd)
+        public bool AddProduct(string nafn, string vorunumer, string strikamerki, string byrgi, string magn, string verd, string kassakerfi)
         {
             var connection = Connect();
             if (connection != null)
@@ -196,7 +200,7 @@ namespace RetailServer.DBConnection
                 {
                     using (var command = connection.CreateCommand())
                     {
-                        command.CommandText = "INSERT INTO vorur (nafn, vorunumer, strikamerki, byrgi, magn, verd) VALUES ('" + nafn + "', '" + vorunumer + "', '" + strikamerki + "', '" + byrgi + "', '" + magn + "', '" + verd + "');";
+                        command.CommandText = "INSERT INTO vorur (nafn, vorunumer, strikamerki, byrgi, magn, verd) VALUES ('" + nafn + "', '" + vorunumer + "', '" + strikamerki + "', '" + byrgi + "', '" + magn + "', '" + verd + "', '" + kassakerfi + "');";
                         try
                         {
                             command.ExecuteNonQuery();

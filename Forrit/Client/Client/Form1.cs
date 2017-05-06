@@ -38,27 +38,29 @@ namespace Client
                 for (int i = 0; i < items.Count; i++)
                 {
                     var item = items[i];
-                    counter++;
-                    Button button = new Button();
-                    button.Location = new System.Drawing.Point(x, y);
-                    button.Size = new System.Drawing.Size(80, 80);
-                    button.Text = item.Name.ToString();
-                    button.Click += (s, e) =>
+                    if (item.Kassakerfi == "1")
                     {
-                        // Hérna kemur inn virkni fyrir alla takkanna.
-                        listBox.Items.Add(item);
-                        ReiknaSamtals();
-                    };
-                    buttons.Add(button);
-                    this.Controls.Add(button);
-                    x = x + 80;
-                    if (counter == 3)
-                    {
-                        y = y + 80;
-                        x = 550;
-                        counter = 0;
+                        counter++;
+                        Button button = new Button();
+                        button.Location = new System.Drawing.Point(x, y);
+                        button.Size = new System.Drawing.Size(80, 80);
+                        button.Text = item.Name.ToString();
+                        button.Click += (s, e) =>
+                        {
+                            // Hérna kemur inn virkni fyrir alla takkanna.
+                            listBox.Items.Add(item);
+                            ReiknaSamtals();
+                        };
+                        buttons.Add(button);
+                        this.Controls.Add(button);
+                        x = x + 80;
+                        if (counter == 3)
+                        {
+                            y = y + 80;
+                            x = 550;
+                            counter = 0;
+                        }
                     }
-
                 }
             }
             catch (Exception ex)
