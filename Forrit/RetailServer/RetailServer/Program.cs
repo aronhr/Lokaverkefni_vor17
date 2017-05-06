@@ -22,57 +22,6 @@ namespace RetailServer
             using (WebApp.Start<Startup>("http://localhost:8080"))
             {
                 Console.WriteLine("Web Server is running.");
-
-                // FLUTTI ÞETTA Í CONSOLE ServiceDesk SEM NOTAR API TIL AÐ TALA VIÐ ÞENNAN SERVER
-                //// Create user
-                //Console.WriteLine("Enter commands.. Etc. CreateUser, CreateProduct");
-                //var ServerTalks = "";
-                //do
-                //{
-                //    ServerTalks = Console.ReadLine();
-
-                //    if (ServerTalks == "CreateUser")
-                //    {
-                //        // Do someting
-                //        Console.WriteLine("Create New User!");
-                //        Console.Write("Kennitala: ");
-                //        var kennitala = Console.ReadLine();
-                //        Console.Write("Nafn: ");
-                //        var nafn = Console.ReadLine();
-                //        Console.Write("Kenni: ");
-                //        var kenni = Console.ReadLine();
-
-                //        user.CreateUser(kennitala, nafn, kenni);
-
-                //        ServerTalks = "";
-
-                //    }
-
-                //    if (ServerTalks == "CreateProduct")
-                //    {
-                //        // Do someting
-                //        Console.WriteLine("Create New broduct!");
-                //        Console.Write("nafn: ");
-                //        var nafn_vara = Console.ReadLine();
-                //        Console.Write("Vörunumer: ");
-                //        var vorunumer = Console.ReadLine();
-                //        Console.Write("Strikamerki: ");
-                //        var strikamerki = Console.ReadLine();
-                //        Console.Write("Byrgi: ");
-                //        var byrgi = Console.ReadLine();
-                //        Console.Write("Magn: ");
-                //        var magn = Console.ReadLine();
-                //        Console.Write("Verð: ");
-                //        var verd = Console.ReadLine();
-
-                //        user.AddProduct(nafn_vara, vorunumer, strikamerki, byrgi, magn, verd);
-
-                //        ServerTalks = "";
-
-                //    }
-                //} while (ServerTalks != "Exit" || ServerTalks != "exit");
-                
-
                 Console.WriteLine("Press any key to quit.");
                 Console.ReadLine();
             }
