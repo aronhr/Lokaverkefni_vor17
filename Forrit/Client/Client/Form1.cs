@@ -141,11 +141,6 @@ namespace Client
         private void buttonEnter_Click(object sender, EventArgs e)
         {
             string productID = textBox.Text;
-            if (productID == null || productID == "")
-            {
-                alertLabel.Text = "Engin vara skrifuð inn!";
-                return;
-            }
             Product product = api.GetProduct(productID);
             if (product == null)
             {
