@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailServer", "RetailServer\RetailServer.csproj", "{A30FC268-0BF2-454A-9A26-7DBB26BAC7F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceDesk", "ServiceDesk\ServiceDesk.csproj", "{BE362BEC-FBA8-44A1-8816-0B4FADDA2EE2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{A30FC268-0BF2-454A-9A26-7DBB26BAC7F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A30FC268-0BF2-454A-9A26-7DBB26BAC7F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A30FC268-0BF2-454A-9A26-7DBB26BAC7F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE362BEC-FBA8-44A1-8816-0B4FADDA2EE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE362BEC-FBA8-44A1-8816-0B4FADDA2EE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE362BEC-FBA8-44A1-8816-0B4FADDA2EE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE362BEC-FBA8-44A1-8816-0B4FADDA2EE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

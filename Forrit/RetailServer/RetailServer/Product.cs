@@ -9,11 +9,10 @@ namespace RetailServer
     public class Product
     {
         public string Name { get; set; }
-        public string ID { get; set; }
-        public int Price { get; set; }
-        public override string ToString()
-        {
-            return Name + " " + Price;
-        }
+        public string Vorunumer { get; set; }
+        public string Strikamerki { get; set; }
+        public string Byrgi { get; set; }
+        public string Magn { get; set; }
+        public string Verd { get; set; }
     }
 }

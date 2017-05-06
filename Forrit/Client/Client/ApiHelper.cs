@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using System.Text;
 
 namespace Client
 {
-    public class ProductHelper
+    public class ApiHelper
     {
         JsonSerializer serializer = new JsonSerializer();
 
@@ -30,20 +31,34 @@ namespace Client
         {
             return Get<Product>(id);
         }
-        public List<Product> GetItemsOnDeck()
+        public void AddKvittun(Kvittun kvittun)
         {
-            return Get<List<Product>>();
+            using (WebClient client = new WebClient())
+            {
+                client.Headers.Add(HttpRequestHeader.ContentType, "application/json");
+                client.Encoding = System.Text.Encoding.UTF8;
+                byte[] data = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(kvittun));
+                client.UploadData("http://localhost:8080/api/kvittun", "POST", data);
+            }
         }
     }
-
+    public class Kvittun
+    {
+        public string ID { get; set; }
+        public string Text { get; set; }
+        public int Price { get; set; }
+    }
     public class Product
     {
         public string Name { get; set; }
-        public string ID { get; set; }
-        public int Price { get; set; }
+        public string Vorunumer { get; set; }
+        public string Strikamerki { get; set; }
+        public string Byrgi { get; set; }
+        public string Magn { get; set; }
+        public int Verd { get; set; }
         public override string ToString()
         {
-            return Name + " " + Price;
+            return Name + " " + Verd.ToString();
         }
-    }
+    }    
 }

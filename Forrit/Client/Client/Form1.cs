@@ -6,12 +6,13 @@ using System.Net.Sockets;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace Client
 {
     public partial class Form1 : Form
     {
-        private ProductHelper api = new ProductHelper();
+        private ApiHelper api = new ApiHelper();
 
         public Form1()
         {
@@ -20,9 +21,9 @@ namespace Client
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            GenerateButtons();
+            // GenerateButtons();
         }
-
+        /*
         public void GenerateButtons()
         {
             int x = 550;
@@ -63,7 +64,7 @@ namespace Client
             }
             
         }
-        
+        */
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             switch (keyData)
@@ -136,6 +137,7 @@ namespace Client
             }
             textBox.Clear();
             listBox.Items.Add(product);
+            ReiknaSamtals();
         }
 
         private void delete_Click(object sender, EventArgs e)
@@ -154,5 +156,55 @@ namespace Client
         {
             textBox.Clear();
         }
+
+        private void buttonListDel_Click(object sender, EventArgs e)
+        {
+            for (int i = listBox.SelectedItems.Count - 1; i >= 0; i--)
+            {
+                listBox.Items.Remove(listBox.SelectedItems[i]);
+            }
+            ReiknaSamtals();
+        }
+        int samtals = 0;
+        private void ReiknaSamtals()
+        {
+            samtals = 0;
+            foreach (Product p in listBox.Items)
+            {
+                samtals += p.Verd;
+            }
+            labelSamtals.Text = "Samtals " + samtals;
+        }
+
+        private void buttonReidufe_Click(object sender, EventArgs e)
+        {
+            SaveKvittun();
+        }
+
+        private void buttonKort_Click(object sender, EventArgs e)
+        {
+            SaveKvittun();
+        }
+
+        private void SaveKvittun()
+        {
+            api.AddKvittun(new Kvittun { Text = GetListText(), Price = samtals });
+            listBox.Items.Clear();
+            ReiknaSamtals();
+        }
+        private string GetListText()
+        {
+            StringBuilder builder = new StringBuilder();
+            builder.AppendLine("---------------");
+            foreach (Product product in listBox.Items)
+            {
+                builder.AppendFormat("{0}\t\t{1}", product.Name, product.Verd).AppendLine();
+            }
+            builder.AppendLine("---------------");
+            builder.AppendFormat("\t\t{0}", samtals);
+            return builder.ToString();
+        }
+
+       
     }
 }

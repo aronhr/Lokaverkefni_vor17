@@ -44,6 +44,10 @@
             this.delete = new System.Windows.Forms.Button();
             this.listBox = new System.Windows.Forms.ListBox();
             this.alertLabel = new System.Windows.Forms.Label();
+            this.labelSamtals = new System.Windows.Forms.Label();
+            this.buttonListDel = new System.Windows.Forms.Button();
+            this.buttonKort = new System.Windows.Forms.Button();
+            this.buttonReidufe = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -188,7 +192,7 @@
             this.listBox.FormattingEnabled = true;
             this.listBox.Location = new System.Drawing.Point(47, 141);
             this.listBox.Name = "listBox";
-            this.listBox.Size = new System.Drawing.Size(224, 459);
+            this.listBox.Size = new System.Drawing.Size(224, 251);
             this.listBox.TabIndex = 16;
             // 
             // alertLabel
@@ -200,11 +204,53 @@
             this.alertLabel.Size = new System.Drawing.Size(0, 13);
             this.alertLabel.TabIndex = 17;
             // 
+            // labelSamtals
+            // 
+            this.labelSamtals.AutoSize = true;
+            this.labelSamtals.Location = new System.Drawing.Point(47, 399);
+            this.labelSamtals.Name = "labelSamtals";
+            this.labelSamtals.Size = new System.Drawing.Size(0, 13);
+            this.labelSamtals.TabIndex = 18;
+            // 
+            // buttonListDel
+            // 
+            this.buttonListDel.Location = new System.Drawing.Point(289, 348);
+            this.buttonListDel.Name = "buttonListDel";
+            this.buttonListDel.Size = new System.Drawing.Size(53, 44);
+            this.buttonListDel.TabIndex = 19;
+            this.buttonListDel.Text = "Delete";
+            this.buttonListDel.UseVisualStyleBackColor = true;
+            this.buttonListDel.Click += new System.EventHandler(this.buttonListDel_Click);
+            // 
+            // buttonKort
+            // 
+            this.buttonKort.Location = new System.Drawing.Point(47, 435);
+            this.buttonKort.Name = "buttonKort";
+            this.buttonKort.Size = new System.Drawing.Size(101, 23);
+            this.buttonKort.TabIndex = 20;
+            this.buttonKort.Text = "Kort";
+            this.buttonKort.UseVisualStyleBackColor = true;
+            this.buttonKort.Click += new System.EventHandler(this.buttonKort_Click);
+            // 
+            // buttonReidufe
+            // 
+            this.buttonReidufe.Location = new System.Drawing.Point(170, 435);
+            this.buttonReidufe.Name = "buttonReidufe";
+            this.buttonReidufe.Size = new System.Drawing.Size(101, 23);
+            this.buttonReidufe.TabIndex = 21;
+            this.buttonReidufe.Text = "Reiðufé";
+            this.buttonReidufe.UseVisualStyleBackColor = true;
+            this.buttonReidufe.Click += new System.EventHandler(this.buttonReidufe_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(825, 649);
+            this.Controls.Add(this.buttonReidufe);
+            this.Controls.Add(this.buttonKort);
+            this.Controls.Add(this.buttonListDel);
+            this.Controls.Add(this.labelSamtals);
             this.Controls.Add(this.alertLabel);
             this.Controls.Add(this.listBox);
             this.Controls.Add(this.delete);
@@ -247,6 +293,10 @@
         private System.Windows.Forms.Button delete;
         private System.Windows.Forms.ListBox listBox;
         private System.Windows.Forms.Label alertLabel;
+        private System.Windows.Forms.Label labelSamtals;
+        private System.Windows.Forms.Button buttonListDel;
+        private System.Windows.Forms.Button buttonKort;
+        private System.Windows.Forms.Button buttonReidufe;
     }
 }
 
