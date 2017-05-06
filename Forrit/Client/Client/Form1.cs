@@ -21,7 +21,7 @@ namespace Client
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // GenerateButtons();
+            GenerateButtons();
         }
 
         public void GenerateButtons()
@@ -45,7 +45,7 @@ namespace Client
                     button.Click += (s, e) =>
                     {
                         // Hérna kemur inn virkni fyrir alla takkanna.
-                        listBox.Items.Add(item.Name + " " + item.Price);
+                        listBox.Items.Add(item.Name + " " + item.Verd);
                     };
                     buttons.Add(button);
                     this.Controls.Add(button);
@@ -72,7 +72,7 @@ namespace Client
             }
             
         }
-        */
+        
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             switch (keyData)
