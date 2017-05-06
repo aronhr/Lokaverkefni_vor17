@@ -23,16 +23,18 @@ namespace Client
             GenerateButtons();
         }
 
+
         public void GenerateButtons()
         {
-            int x = 550;
-            int y = 5;
-            int counter = 0;
-            List<Button> buttons = new List<Button>();
-            Product item = api.GetProduct("5501");
+            TryAgain:
+            
             try
             {
-                
+                int x = 550;
+                int y = 5;
+                int counter = 0;
+                List<Button> buttons = new List<Button>();
+                Product item = api.GetProduct("5501");
                 for (int i = 0; i < 24; i++)
                 {
                     counter++;
@@ -59,7 +61,14 @@ namespace Client
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                if (MessageBox.Show("Could not connect to server, would you like to try again?", "Attention", MessageBoxButtons.RetryCancel) == DialogResult.Retry)
+                {
+                    goto TryAgain;
+                }
+                else
+	            {
+                    Environment.Exit(0);
+                }
             }
             
         }
