@@ -14,3 +14,6 @@
   > I always get error code from that specific command
   > The error was: PluginError('There has been an error in parsing the file /etc/apache2/sites-available/html.conf.save on line 28: Syntax error',)
   > Ive tried everything. I took a look on the web and tried editing config files but with no luck
+
+#### Trying to fix
+  > I tried editing /etc/apache2/sites-available/html.conf.save since the error was coming from that file, the web suggested that I tried to remove </VirtualHost> but did not do anything for me.
