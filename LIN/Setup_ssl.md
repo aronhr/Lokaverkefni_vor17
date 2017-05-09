@@ -24,7 +24,9 @@ After that I got another error "Can’t renew certificate: We were unable to fin
   ` > sudo certbot --apache -d lokaverkefni.tk -d www.lokaverkefni.tk`
 
 `You have an excisting certificate that has exactly the same domains and certficiate name you requested and isn't close to expiry.`
+
   `1. Attempt to reinstall this existing certificate.`
+  
   `2. Renew and replace the cert (limit ~5 per 7 days)`
   
 This happend because I just made a cerificate but got an error in the command after.
