@@ -200,7 +200,7 @@ namespace RetailServer.DBConnection
                 {
                     using (var command = connection.CreateCommand())
                     {
-                        command.CommandText = "INSERT INTO vorur (nafn, vorunumer, strikamerki, byrgi, magn, verd) VALUES ('" + nafn + "', '" + vorunumer + "', '" + strikamerki + "', '" + byrgi + "', '" + magn + "', '" + verd + "', '" + kassakerfi + "');";
+                        command.CommandText = "INSERT INTO vorur (nafn, vorunumer, strikamerki, byrgi, magn, verd, kassakerfi) VALUES ('" + nafn + "', '" + vorunumer + "', '" + strikamerki + "', '" + byrgi + "', '" + magn + "', '" + verd + "', '" + kassakerfi + "');";
                         try
                         {
                             command.ExecuteNonQuery();
