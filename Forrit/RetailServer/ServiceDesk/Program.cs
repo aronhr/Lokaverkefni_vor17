@@ -51,8 +51,10 @@ namespace ServiceDesk
                     var magn = Console.ReadLine();
                     Console.Write("Verð: ");
                     var verd = Console.ReadLine();
+                    Console.Write("Birta í kassakerfi? (Já = 1 / Nei = 0)");
+                    var kassakerfi = Console.ReadLine();
 
-                    api.AddVara(new Product { Name = nafn_vara, Vorunumer = vorunumer, Strikamerki = strikamerki, Byrgi = byrgi, Magn = magn, Verd = verd });
+                    api.AddVara(new Product { Name = nafn_vara, Vorunumer = vorunumer, Strikamerki = strikamerki, Byrgi = byrgi, Magn = magn, Verd = verd, Kassakerfi =  kassakerfi});
 
                     ServerTalks = "";
                     Console.WriteLine("Successfully added product");
