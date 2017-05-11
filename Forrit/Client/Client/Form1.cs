@@ -192,7 +192,7 @@ namespace Client
             {
                 samtals += p.Verd;
             }
-            labelSamtals.Text = "Samtals " + samtals;
+            labelSamtals.Text = "Samtals: " + samtals;
         }
 
         private void buttonReidufe_Click(object sender, EventArgs e)
