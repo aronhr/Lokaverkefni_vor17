@@ -49,5 +49,6 @@ namespace ServiceDesk
         public string Magn { get; set; }
         public string Verd { get; set; }
         public string Kassakerfi { get; set; }
+        public string Staff { get; set; }
     }
 }

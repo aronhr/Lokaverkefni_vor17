@@ -57,6 +57,7 @@ namespace Client
         public string Magn { get; set; }
         public int Verd { get; set; }
         public string Kassakerfi { get; set; }
+        public string Staff { get; set; }
         public override string ToString()
         {
             return Name + " " + Verd.ToString();

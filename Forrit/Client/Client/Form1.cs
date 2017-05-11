@@ -183,6 +183,7 @@ namespace Client
             }
             ReiknaSamtals();
         }
+
         int samtals = 0;
         private void ReiknaSamtals()
         {
@@ -210,9 +211,12 @@ namespace Client
             listBox.Items.Clear();
             ReiknaSamtals();
         }
+
         private string GetListText()
         {
             StringBuilder builder = new StringBuilder();
+            string Staff = textBox1.Text;
+            builder.AppendFormat("Starfsmaður: {0}", Staff).AppendLine();
             builder.AppendLine("---------------");
             foreach (Product product in listBox.Items)
             {
@@ -222,7 +226,5 @@ namespace Client
             builder.AppendFormat("\t\t{0}", samtals);
             return builder.ToString();
         }
-
-       
     }
 }
