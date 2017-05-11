@@ -138,6 +138,16 @@ namespace Client
             }
         }
 
+        // Til að setja inn bókstafi í starfsmanna textboxið
+        private void staff_text(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBox1.Text))
+            {
+                Button staff = (Button)sender;
+                textBox1.Text += staff;
+            }
+        }
+
         private void buttonEnter_Click(object sender, EventArgs e)
         {
             string productID = textBox.Text;
