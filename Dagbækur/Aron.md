@@ -20,3 +20,12 @@
 
 #### Dagur 7 
   > Lagað var communication á milli forrita (Adam). Ég bætti inn CreateUser Skypun og CreateProduct. Það tók smá tíma þar sem Adam var búinn að breyta öllum kóðanum :)
+
+#### Dagur 8
+  > Leiðbeiningar til að keyra upp servers. 
+  
+#### Dagur 9
+  > Lagaði villu sem var i CreateProduct
+  
+#### Dagur 10
+  > Lagaði þannig að það er hægt að skrifa inn strikamerki með lyklaborði
