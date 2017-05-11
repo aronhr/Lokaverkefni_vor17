@@ -1,8 +1,8 @@
-# Lokaverkefni Vor 2017
+## Synopsis
 
-### Forrit sem notast við gagnagrunn sem er hýstur á linux server
+Þetta verkefni er lokaverkefni tölvubrautar vor 2017. Þetta verkefni er kassakerfi fyrir litlar og einfaldar verslanir. Lokaverkefni_vor17 er með tvö forrit RetailServer og Client.. RetailServerinn keyrir allar færslur sem Clientinn gerir. Clientinn þarf að vera með Serverinn til að geta keyrt. 
 
-#### Leiðbeiningar til að keyra Server
+## Leiðbeiningar til að keyra Server
   1. Opnaðu Visual studios (VS) RetailServer.
   2. Hægrismelltu á Solution 'RetailServer' (2 Projects).
   3. Íttu á Properties
