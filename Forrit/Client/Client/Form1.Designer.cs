@@ -48,8 +48,6 @@
             this.buttonListDel = new System.Windows.Forms.Button();
             this.buttonKort = new System.Windows.Forms.Button();
             this.buttonReidufe = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -244,29 +242,11 @@
             this.buttonReidufe.UseVisualStyleBackColor = true;
             this.buttonReidufe.Click += new System.EventHandler(this.buttonReidufe_Click);
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(116, 95);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 22;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(44, 98);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 13);
-            this.label1.TabIndex = 23;
-            this.label1.Text = "Starfsmaður:";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(825, 649);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.buttonReidufe);
             this.Controls.Add(this.buttonKort);
             this.Controls.Add(this.buttonListDel);
@@ -287,7 +267,6 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.Q);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -348,8 +327,6 @@
         private System.Windows.Forms.Button buttonListDel;
         private System.Windows.Forms.Button buttonKort;
         private System.Windows.Forms.Button buttonReidufe;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
     }
 }
 

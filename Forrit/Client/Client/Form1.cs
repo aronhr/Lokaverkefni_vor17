@@ -151,9 +151,6 @@ namespace Client
                 case Keys.D9:
                     num_Button_Click(button9, new System.EventArgs());
                     break;
-                case Keys.Q:
-                    staff_text(Q, new System.EventArgs());
-                    break;
                 default:
                     break;
             }
@@ -168,17 +165,6 @@ namespace Client
             {
                 Button button = (Button)sender;
                 textBox.Text += button.Text;
-            }
-        }
-
-        // Til að setja inn bókstafi í starfsmanna textboxið
-        private void staff_text(object sender, EventArgs e)
-        {
-            alertLabel.Text = "";
-            if (string.IsNullOrWhiteSpace(textBox1.Text))
-            {
-                Button staff = (Button)sender;
-                textBox1.Text += staff;
             }
         }
 
