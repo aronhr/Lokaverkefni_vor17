@@ -121,6 +121,39 @@ namespace Client
                 case Keys.NumPad9:
                     num_Button_Click(button9, new System.EventArgs());
                     break;
+                case Keys.D0:
+                    num_Button_Click(button0, new System.EventArgs());
+                    break;
+                case Keys.D1:
+                    num_Button_Click(button1, new System.EventArgs());
+                    break;
+                case Keys.D2:
+                    num_Button_Click(button2, new System.EventArgs());
+                    break;
+                case Keys.D3:
+                    num_Button_Click(button3, new System.EventArgs());
+                    break;
+                case Keys.D4:
+                    num_Button_Click(button4, new System.EventArgs());
+                    break;
+                case Keys.D5:
+                    num_Button_Click(button5, new System.EventArgs());
+                    break;
+                case Keys.D6:
+                    num_Button_Click(button6, new System.EventArgs());
+                    break;
+                case Keys.D7:
+                    num_Button_Click(button7, new System.EventArgs());
+                    break;
+                case Keys.D8:
+                    num_Button_Click(button8, new System.EventArgs());
+                    break;
+                case Keys.D9:
+                    num_Button_Click(button9, new System.EventArgs());
+                    break;
+                case Keys.Q:
+                    staff_text(Q, new System.EventArgs());
+                    break;
                 default:
                     break;
             }
@@ -141,6 +174,7 @@ namespace Client
         // Til að setja inn bókstafi í starfsmanna textboxið
         private void staff_text(object sender, EventArgs e)
         {
+            alertLabel.Text = "";
             if (string.IsNullOrWhiteSpace(textBox1.Text))
             {
                 Button staff = (Button)sender;

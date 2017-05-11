@@ -287,6 +287,7 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.Q);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -306,6 +307,8 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
+
+
         private System.Windows.Forms.Button Q;
         private System.Windows.Forms.Button W;
         private System.Windows.Forms.Button E;
@@ -332,6 +335,8 @@
         private System.Windows.Forms.Button B;
         private System.Windows.Forms.Button N;
         private System.Windows.Forms.Button M;
+
+
         private System.Windows.Forms.TextBox textBox;
         private System.Windows.Forms.Button buttonEnter;
         private System.Windows.Forms.Button button0;
