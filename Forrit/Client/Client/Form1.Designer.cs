@@ -216,7 +216,7 @@
             // 
             this.buttonListDel.Location = new System.Drawing.Point(289, 348);
             this.buttonListDel.Name = "buttonListDel";
-            this.buttonListDel.Size = new System.Drawing.Size(53, 44);
+            this.buttonListDel.Size = new System.Drawing.Size(53, 48);
             this.buttonListDel.TabIndex = 19;
             this.buttonListDel.Text = "Delete";
             this.buttonListDel.UseVisualStyleBackColor = true;
@@ -286,6 +286,36 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
+
+
+        private System.Windows.Forms.Button Q;
+        private System.Windows.Forms.Button W;
+        private System.Windows.Forms.Button E;
+        private System.Windows.Forms.Button R;
+        private System.Windows.Forms.Button T;
+        private System.Windows.Forms.Button Y;
+        private System.Windows.Forms.Button U;
+        private System.Windows.Forms.Button I;
+        private System.Windows.Forms.Button O;
+        private System.Windows.Forms.Button P;
+        private System.Windows.Forms.Button A;
+        private System.Windows.Forms.Button S;
+        private System.Windows.Forms.Button D;
+        private System.Windows.Forms.Button F;
+        private System.Windows.Forms.Button G;
+        private System.Windows.Forms.Button H;
+        private System.Windows.Forms.Button J;
+        private System.Windows.Forms.Button K;
+        private System.Windows.Forms.Button L;
+        private System.Windows.Forms.Button Z;
+        private System.Windows.Forms.Button X;
+        private System.Windows.Forms.Button C;
+        private System.Windows.Forms.Button V;
+        private System.Windows.Forms.Button B;
+        private System.Windows.Forms.Button N;
+        private System.Windows.Forms.Button M;
+
+
         private System.Windows.Forms.TextBox textBox;
         private System.Windows.Forms.Button buttonEnter;
         private System.Windows.Forms.Button button0;

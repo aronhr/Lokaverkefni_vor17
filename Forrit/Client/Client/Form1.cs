@@ -121,6 +121,36 @@ namespace Client
                 case Keys.NumPad9:
                     num_Button_Click(button9, new System.EventArgs());
                     break;
+                case Keys.D0:
+                    num_Button_Click(button0, new System.EventArgs());
+                    break;
+                case Keys.D1:
+                    num_Button_Click(button1, new System.EventArgs());
+                    break;
+                case Keys.D2:
+                    num_Button_Click(button2, new System.EventArgs());
+                    break;
+                case Keys.D3:
+                    num_Button_Click(button3, new System.EventArgs());
+                    break;
+                case Keys.D4:
+                    num_Button_Click(button4, new System.EventArgs());
+                    break;
+                case Keys.D5:
+                    num_Button_Click(button5, new System.EventArgs());
+                    break;
+                case Keys.D6:
+                    num_Button_Click(button6, new System.EventArgs());
+                    break;
+                case Keys.D7:
+                    num_Button_Click(button7, new System.EventArgs());
+                    break;
+                case Keys.D8:
+                    num_Button_Click(button8, new System.EventArgs());
+                    break;
+                case Keys.D9:
+                    num_Button_Click(button9, new System.EventArgs());
+                    break;
                 default:
                     break;
             }
@@ -183,6 +213,7 @@ namespace Client
             }
             ReiknaSamtals();
         }
+
         int samtals = 0;
         private void ReiknaSamtals()
         {
@@ -191,7 +222,7 @@ namespace Client
             {
                 samtals += p.Verd;
             }
-            labelSamtals.Text = "Samtals " + samtals;
+            labelSamtals.Text = "Samtals: " + samtals;
         }
 
         private void buttonReidufe_Click(object sender, EventArgs e)
@@ -210,9 +241,12 @@ namespace Client
             listBox.Items.Clear();
             ReiknaSamtals();
         }
+
         private string GetListText()
         {
             StringBuilder builder = new StringBuilder();
+            string Staff = textBox1.Text;
+            builder.AppendFormat("Starfsmaður: {0}", Staff).AppendLine();
             builder.AppendLine("---------------");
             foreach (Product product in listBox.Items)
             {
@@ -222,7 +256,5 @@ namespace Client
             builder.AppendFormat("\t\t{0}", samtals);
             return builder.ToString();
         }
-
-       
     }
 }
